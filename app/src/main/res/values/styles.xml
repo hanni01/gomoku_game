@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="Widget.Theme.JNI_mosysf.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.Theme.JNI_mosysf.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <!-- 앱 전체 테마: ActionBar 없는 버전 추가 -->
+    <style name="Theme.JNI_mosysf.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+</resources>
