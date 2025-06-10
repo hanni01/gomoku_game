@@ -13,15 +13,21 @@ Android Studio에서 **JNI(C++)로 해당 입력을 수신하여 오목(Gomoku) 
 - 🔧 **키패드 디바이스 드라이버 (C)**  
   - `input subsystem` 기반 드라이버로 `/dev/input/event5`에 키 이벤트 전송  
   - KEY_2/4/6/8 → 방향 이동, KEY_5 → 착수
+ 
+- 🔧 **TEXT LCD 디바이스 드라이버 (C)**
+  - /dev/fpga_textlcd를 O_WRONLY로 open
+  - 받은 text를 s4210 보드의 LCD에 뜨도록 함
 
 - 📡 **Android JNI 연동 (NDK + C++)**  
-  - `/dev/input/eventX`를 직접 open하여 blocking read 방식으로 키 수신  
+  - `/dev/input/event5`를 open하여 키 수신  
   - `onKeyInput()`을 통해 Java와 실시간 통신
+  - `sendTurnToBoard(String text)`을 통해 텍스트 수신
 
 - 🎮 **오목 게임 (Java)**  
   - 14x15 격자 오목판, 돌 커서 이동 및 착수 구현  
   - 격자 계산, 커스텀 뷰(GridView), 좌표 기반 돌 렌더링 포함
-
+  - 착수 기준 5방향(상하좌우, 대각선)에서 5오목이 됐는지 확인하는 알고리즘
+  - 턴 전환 등
 ---
 
 ## 💡 특징
