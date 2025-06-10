@@ -11,7 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameActivity extends AppCompatActivity {
 
-    public class CellPos {
+    public ImageView getCurrentStone() {
+
+        return (currentTurn == 1) ? b_stoneCursor : w_stoneCursor;
+    }
+
+    public static class CellPos {
         public float x, y;
 
         public CellPos(float x, float y) {
@@ -41,11 +46,11 @@ public class GameActivity extends AppCompatActivity {
     private int cursorY = INIT_Y;
 
     // 돌의 픽셀 위치를 처리할 배열
-    private CellPos[][] cellPositions = new CellPos[BOARD_HEIGHT][BOARD_WIDTH];
+    private final CellPos[][] cellPositions = new CellPos[BOARD_HEIGHT][BOARD_WIDTH];
 
     // 게임 상태 변수
-    // 돌의 로직상의 위치를 처리할 배열
-    private int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 보드 상태
+    // 돌의 로직 상의 위치를 처리할 배열
+    private final int[][] board = new int[BOARD_HEIGHT][BOARD_WIDTH]; // 보드 상태
     private int currentTurn = 1; // 1: 흑, 2: 백
     private boolean isGameRunning = true;
 
@@ -116,15 +121,15 @@ public class GameActivity extends AppCompatActivity {
 
     private void updateCursorPosition() {
         CellPos pos = cellPositions[cursorY][cursorX];
-        ImageView targetCursor = (currentTurn == 1) ? b_stoneCursor : w_stoneCursor;
-        targetCursor.setTranslationX(pos.x);
-        targetCursor.setTranslationY(pos.y);
+
+        getCurrentStone().setTranslationX(pos.x);
+        getCurrentStone().setTranslationY(pos.y);
     }
 
-    private void placeCursorPosition(ImageView targetStone, int x, int y){
+    private void placeCursorPosition(int x, int y){
         CellPos pos = cellPositions[x][y];
-        targetStone.setTranslationX(pos.x);
-        targetStone.setTranslationY(pos.y);
+        getCurrentStone().setTranslationX(pos.x);
+        getCurrentStone().setTranslationY(pos.y);
     }
 
     // 착수 처리
@@ -138,17 +143,16 @@ public class GameActivity extends AppCompatActivity {
         board[y][x] = currentTurn;
 
         // View에 돌 이미지 착수
-        ImageView targetCursor = (currentTurn == 1) ? b_stoneCursor : w_stoneCursor;
-        ImageView stone = new ImageView(targetCursor.getContext());
+        ImageView stone = new ImageView(getCurrentStone().getContext());
         stone.setImageResource(currentTurn == 1 ? R.drawable.black_stone : R.drawable.white_stone);
 
         // 크기 설정 (커서 이미지와 동일하게)
         stone.setLayoutParams(new FrameLayout.LayoutParams(
-                targetCursor.getWidth(),
-                targetCursor.getHeight()
+                getCurrentStone().getWidth(),
+                getCurrentStone().getHeight()
         ));
 
-        placeCursorPosition(stone, cursorY, cursorX); // 또는 placeCursorPosition(stone, x, y);
+        placeCursorPosition(cursorX, cursorY); // 또는 placeCursorPosition(stone, x, y);
 
         FrameLayout layout = findViewById(R.id.main);
         layout.addView(stone, layout.getChildCount() - 2); // imageView1, imageView2 위에는 올리지 않도록!
