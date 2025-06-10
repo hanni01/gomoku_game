@@ -8,6 +8,7 @@
     tools:context=".GameActivity">
 
     <!-- 오목판 배경 -->
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -35,12 +36,21 @@
         android:translationX="0dp"
         android:translationY="0dp" />
 
-<!--    <com.example.jni_mosysf.DrawGridView
-        android:id="@+id/gridView"
-        android:layout_width="290dp"
-        android:layout_height="345dp"
-        android:layout_gravity="center"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:translationY="5dp" />-->
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="top|start"
+        android:src="@drawable/white_stone"
+        android:translationX="0dp"
+        android:translationY="0dp" />
+
+    <!--    <com.example.jni_mosysf.DrawGridView
+            android:id="@+id/gridView"
+            android:layout_width="290dp"
+            android:layout_height="345dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:translationY="5dp" />-->
 </FrameLayout>
