@@ -7,6 +7,12 @@ Android Studio에서 **JNI(C++)로 해당 입력을 수신하여 오목(Gomoku) 
 
 임베디드 ↔ 안드로이드 **하드웨어-소프트웨어 통합 예제**
 
+## 📌 구현 결과 영상 ↓↓
+
+<a href="https://youtube.com/shorts/0MwDghmP1BQ?feature=share">
+  <img src="https://github.com/user-attachments/assets/d77312ed-8f53-421a-a79d-e70e69cc2fc5" alt="구현 결과 영상 참고" width="400">
+</a>
+
 ---
 
 ## 🧩 주요 구성
